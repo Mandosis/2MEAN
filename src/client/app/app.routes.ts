@@ -1,8 +1,8 @@
 import { RouterConfig } from '@angular/router';
-import { App } from './app.component';
+import { Home } from './home/home.component';
 
 export const routes: RouterConfig = [
   { path: '', redirectTo: 'home' },
-  { path: 'home', component: App },
+  { path: 'home', component: Home },
   { path: '**', redirectTo: 'home' }
 ];

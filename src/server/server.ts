@@ -18,7 +18,7 @@ const ROOT = path.join(path.resolve(__dirname, '..'));
 
 // Express View
 app.engine('.html', expressEngine);
-app.set('views', __dirname);
+app.set('views', path.join(__dirname, '../client'));
 app.set('view engine', 'html');
 
 app.use(cookieParser('Angular 2 Universal'));
