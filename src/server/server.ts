@@ -28,9 +28,8 @@ app.use(express.static(path.join(__dirname, '../../dist/client'), {index: false}
 
 import { ngApp } from './routes/ngApp';
 
-app.get('/', ngApp);
-app.get('/home', ngApp);
-app.get('/home/*', ngApp);
+// MUST BE AT THE BOTTOM!
+app.get('/*', ngApp);
 
 
 
