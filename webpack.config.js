@@ -27,14 +27,14 @@ var commonConfig = {
 
 var clientConfig = {
   target: 'web',
-  entry: [
-    './src/client/client',
-    './src/client/polyfills',
-    './src/client/vendor'
-  ],
+  entry: {
+    polyfills: './src/client/polyfills.ts',
+    vendor: './src/client/vendor.ts',
+    main: './src/client/client.ts'
+  },
   output: {
+    filename: '[name].js',
     path: root('dist/client')
-    filename: '[name].js'
   },
   node: {
     global: true,
