@@ -24,7 +24,7 @@ app.set('view engine', 'html');
 app.use(cookieParser('Angular 2 Universal'));
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(ROOT, 'dist/client'), {index: false}));
+app.use(express.static(path.join(__dirname, '../../dist/client'), {index: false}));
 
 import { ngApp } from './routes/ngApp';
 
