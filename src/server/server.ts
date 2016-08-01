@@ -6,6 +6,7 @@ import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
 import * as path from 'path';
 import * as winston from 'winston';
+import * as helmet from 'helmet';
 
 import * as router from './routes/router';
 
@@ -57,6 +58,7 @@ app.set('view engine', 'html');
  */
 app.use(cookieParser('Angular 2 Universal'));
 app.use(bodyParser.json());
+app.use(helmet());
 
 /*
  * Set directories to serve static assets from
