@@ -1,9 +1,11 @@
 // the polyfills must be the first thing imported in node.js
 import 'angular2-universal/polyfills';
+
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
 import * as path from 'path';
+
 
 // Angular 2
 import { enableProdMode } from '@angular/core';
@@ -16,22 +18,31 @@ enableProdMode();
 const app = express();
 const ROOT = path.join(path.resolve(__dirname, '..'));
 
-// Express View
+/*
+ * Configure Express.js rendering engine
+ */
 app.engine('.html', expressEngine);
 app.set('views', path.join(__dirname, '../client'));
 app.set('view engine', 'html');
 
+/*
+ * Configure Middleware
+ */
 app.use(cookieParser('Angular 2 Universal'));
 app.use(bodyParser.json());
 
+/*
+ * Set directory to serve static assets from
+ */
 app.use(express.static(path.join(__dirname, '../../dist/client'), {index: false}));
 
-import { ngApp } from './routes/ngApp';
+/*
+ * Router
+ * Description: Handles routing in express. See routes/router.ts
+ */
+import * as router from './routes/router';
 
-// MUST BE AT THE BOTTOM!
-app.get('/*', ngApp);
-
-
+app.use('/', router);
 
 let server = app.listen(process.env.PORT || 3000, () => {
   console.log(`Listening on: http://localhost:${server.address().port}`);
