@@ -1,6 +1,7 @@
 // the polyfills must be the first thing imported in node.js
 import 'angular2-universal/polyfills';
 
+import 'dotenv';
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
