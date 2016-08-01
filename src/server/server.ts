@@ -37,12 +37,19 @@ winston.add(winston.transports.Console, {
     colorize: true
 });
 
+/*
+ * Connect to database
+ * Info: See database.ts to configure settings
+ */
+ import { Connect } from './database';
+
+ Connect();
 
 /*
  * Configure Express.js rendering engine
  */
 app.engine('.html', expressEngine);
-app.set('views', path.join(__dirname, '../client'));
+app.set('views', path.join(__dirname, '../../public/views'));
 app.set('view engine', 'html');
 
 /*
@@ -52,9 +59,10 @@ app.use(cookieParser('Angular 2 Universal'));
 app.use(bodyParser.json());
 
 /*
- * Set directory to serve static assets from
+ * Set directories to serve static assets from
  */
-app.use(express.static(path.join(__dirname, '../../dist/client'), {index: false}));
+app.use(express.static(path.join(__dirname, '../../public'), {index: false}));
+app.use('/assets/js', express.static(path.join(__dirname, '../../dist/client')));
 
 /*
  * Routes

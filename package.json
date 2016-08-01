@@ -10,10 +10,10 @@
     "build": "webpack",
     "build:prod": "webpack --progress -p",
     "prestart": "npm run build",
-    "server": "nodemon dist/server/index.js",
+    "server": "nodemon dist/server.js",
     "start": "npm run server",
     "predebug": "npm run build",
-    "debug": "node --debug-brk dist/server/index.js"
+    "debug": "node --debug-brk dist/server.js"
   },
   "keywords": [],
   "author": "Chris Rabuse",
@@ -34,6 +34,7 @@
     "express": "^4.14.0",
     "ie-shim": "^0.1.0",
     "methods": "~1.1.2",
+    "mongoose": "^4.5.7",
     "parse5": "^1.5.0",
     "preboot": "^2.1.2",
     "rxjs": "5.0.0-beta.6",
