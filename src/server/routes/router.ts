@@ -1,7 +1,7 @@
 import * as express from 'express';
 import { ngApp } from './ngApp';
 
-const router = express.Router();
+var router: any = express.Router();
 
 // Put API routes here
 

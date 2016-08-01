@@ -5,6 +5,9 @@ import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
 import * as path from 'path';
+import * as winston from 'winston';
+
+import * as router from './routes/router';
 
 
 // Angular 2
@@ -17,6 +20,23 @@ enableProdMode();
 
 const app = express();
 const ROOT = path.join(path.resolve(__dirname, '..'));
+
+/*
+ * Configure Winston
+ */
+winston.addColors({
+    debug: 'green',
+    info: 'cyan',
+    silly: 'magenta',
+    warn: 'yellow',
+    error: 'red'
+});
+winston.remove(winston.transports.Console);
+winston.add(winston.transports.Console, {
+    level: process.env.LOG_LEVEL,
+    colorize: true
+});
+
 
 /*
  * Configure Express.js rendering engine
@@ -37,13 +57,25 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../../dist/client'), {index: false}));
 
 /*
- * Router
- * Description: Handles routing in express. See routes/router.ts
+ * Routes
  */
-import * as router from './routes/router';
 
-app.use('/', router);
+import { ngApp } from './routes/ngApp';
 
+
+// Put API routes here
+
+/*
+* Catch all for client side rendering
+* Warning: Must be the last route!
+*/
+app.get('/*', ngApp);
+
+
+/*
+ * Server
+ * Info: Runs on port 3000 if not set via environment variable
+ */
 let server = app.listen(process.env.PORT || 3000, () => {
-  console.log(`Listening on: http://localhost:${server.address().port}`);
+  winston.info(`Listening at http://localhost:${server.address().port}`);
 });
