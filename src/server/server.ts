@@ -21,7 +21,7 @@ import { expressEngine } from 'angular2-universal';
 enableProdMode();
 
 const app = express();
-const ROOT = path.join(path.resolve(__dirname, '..'));
+const ROOT = path.join(path.resolve(''));
 
 /*
  * Configure Winston
@@ -47,11 +47,12 @@ winston.add(winston.transports.Console, {
 
  Connect();
 
+
 /*
  * Configure Express.js rendering engine
  */
 app.engine('.html', expressEngine);
-app.set('views', path.join(__dirname, '../../public/views'));
+app.set('views', path.join(ROOT, '/public/views'));
 app.set('view engine', 'html');
 
 /*
@@ -64,8 +65,8 @@ app.use(helmet());
 /*
  * Set directories to serve static assets from
  */
-app.use(express.static(path.join(__dirname, '../../public'), {index: false}));
-app.use('/assets/js', express.static(path.join(__dirname, '../../dist/client')));
+app.use(express.static(path.join(ROOT, 'public'), {index: false}));
+app.use('/assets/js', express.static(path.join(ROOT, '/dist/client')));
 
 /*
  * Routes
@@ -80,7 +81,7 @@ import { ngApp } from './routes/ngApp';
 * Catch all for client side rendering
 * Warning: Must be the last route!
 */
-app.get('/*', ngApp);
+app.get('/', ngApp);
 
 
 /*
