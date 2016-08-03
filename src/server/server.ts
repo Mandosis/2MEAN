@@ -69,20 +69,12 @@ app.use(express.static(path.join(ROOT, 'public'), {index: false}));
 app.use('/assets/js', express.static(path.join(ROOT, '/dist/client')));
 
 /*
- * Routes
+ * Router
  */
 
-import { ngApp } from './routes/ngApp';
+import { Router } from './routes/router';
 
-
-// Put API routes here
-
-/*
-* Catch all for client side rendering
-* Warning: Must be the last route!
-*/
-app.get('/', ngApp);
-
+app.use('/', Router);
 
 /*
  * Server
