@@ -11,7 +11,7 @@ import { provideRouter } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 
 // Application
-import {AppComponent} from '../../client/app/app.component';
+import {App} from '../../client/app/app.component';
 import {routes} from '../../client/app/app.routes';
 
 export function ngApp(req, res) {
@@ -20,7 +20,7 @@ export function ngApp(req, res) {
 
   let config: ExpressEngineConfig = {
     directives: [
-      AppComponent
+      App
     ],
     platformProviders: [
       {provide: ORIGIN_URL, useValue: 'http://localhost:3000'},
