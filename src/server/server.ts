@@ -1,5 +1,5 @@
 // the polyfills must be the first thing imported in node.js
-import 'angular2-universal/polyfills';
+import 'angular2-universal-polyfills';
 
 import 'dotenv';
 import * as express from 'express';
@@ -9,13 +9,10 @@ import * as path from 'path';
 import * as winston from 'winston';
 import * as helmet from 'helmet';
 
-import * as router from './routes/router';
-
-
 // Angular 2
 import { enableProdMode } from '@angular/core';
 // Angular 2 Universal
-import { expressEngine } from 'angular2-universal';
+import { createEngine } from 'angular2-express-engine';
 
 // enable prod for faster renders
 enableProdMode();
@@ -43,15 +40,18 @@ winston.add(winston.transports.Console, {
  * Connect to database
  * Info: See database.ts to configure settings
  */
- import { Connect } from './database';
 
- Connect();
+ // FIX zone.js causing issues
+
+ // import { ConnectToDatabase } from './database';
+ //
+ // ConnectToDatabase();
 
 
 /*
  * Configure Express.js rendering engine
  */
-app.engine('.html', expressEngine);
+app.engine('.html', createEngine({}));
 app.set('views', path.join(ROOT, '/public/views'));
 app.set('view engine', 'html');
 

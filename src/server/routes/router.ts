@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { ngApp } from './ngApp';
+import { ngApp } from './app';
 
 var router: any = express.Router();
 
