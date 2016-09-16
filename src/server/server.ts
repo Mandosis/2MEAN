@@ -41,11 +41,9 @@ winston.add(winston.transports.Console, {
  * Info: See database.ts to configure settings
  */
 
- // FIX zone.js causing issues
+ import { ConnectToDatabase } from './database';
 
- // import { ConnectToDatabase } from './database';
- //
- // ConnectToDatabase();
+ ConnectToDatabase();
 
 
 /*
