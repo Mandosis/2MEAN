@@ -8,7 +8,8 @@
 
 1. `git clone https://github.com/Mandosis/2MEAN.git`
 2. `npm install`
-3. `npm start`
+3. `npm run build` 
+4. `npm start`
 
 ### Build for production
 
