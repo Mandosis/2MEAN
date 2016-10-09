@@ -1,6 +1,6 @@
 # Angular 2 MEAN Stack Starter
 
-2MEAN is a starter for working with Angular 2, Angular 2 Universal, TypeScript and the MEAN Stack.
+2MEAN is a MEAN Stack starter repository for Angular 2 with universal rendering.
 
 ## Instructions
 
