@@ -4,6 +4,12 @@
 
 ## Instructions
 
+### Requirements
+* Node.js v0.6.X
+* Webpack 2.1.0-beta.22
+* Nodemon
+* MongoDB
+
 ### Development
 
 1. `git clone https://github.com/Mandosis/2MEAN.git`
