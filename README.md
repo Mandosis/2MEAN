@@ -17,6 +17,8 @@
 3. `npm run build` 
 4. `npm start`
 
+To watch for file changes and rebuild automatically run `npm run watch`
+
 ### Build for production
 
 `npm run build:prod`
